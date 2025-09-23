@@ -81,10 +81,11 @@ batch_weights = (batch_t * unsqueeze_weights)
 img_gray_weighted = img_weights.sum(-3)
 batch_gray_weighted = batch_weights.sum(-3)
 
-print(batch_weights)
-print(batch_t.shape)
-print(unsqueeze_weights.shape)
+# print(batch_weights)
+# print(batch_t.shape)
+# print(unsqueeze_weights.shape)
 
 img_gray_weighted_fancy = torch.einsum('...chw, c-> ...hw', img_t, weights)
 batch_gray_weighted_fancy = torch.einsum('...chw, c-> ...hw', batch_t, weights)
 print(batch_gray_weighted_fancy.shape)
+
