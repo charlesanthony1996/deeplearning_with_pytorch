@@ -23,3 +23,14 @@ print(t_p)
 
 loss = loss_fn(t_p, t_c)
 print(loss)
+
+delta = 0.1
+loss_rate_of_change_w = (loss_fn(model(t_u, w + delta, b), t_c) - loss_fn(model(t_u, w - delta, b), t_c)) / (2.0 * delta)
+
+learning_rate = 1e-2
+w = w - learning_rate * loss_rate_of_change_w
+
+# we can do the same with b
+loss_rate_of_change_b = (loss_fn(model(t_u, w, b + delta), t_c) - loss_fn(model(t_u, w, b - delta), t_c)) / (2.0 * delta)
+b = b - learning_rate * loss_rate_of_change_b
+
